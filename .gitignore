@@ -1,5 +1,4 @@
-# Build output
-bin/
+# Intermediate build output
 obj/
 .vs/
 
@@ -9,15 +8,9 @@ obj/
 *.userosscache
 *.sln.docstates
 
-# Logs and debug symbols
+# Logs and local credentials
 *.log
-*.pdb
-
-# Generated installers and archives
-installer/output/
-*.exe
-*.zip
-
-# Local credentials and configuration
 auth.xml
 *.secrets.json
+
+# The repository intentionally includes bin/Release and installer/output.

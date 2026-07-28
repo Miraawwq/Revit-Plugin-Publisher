@@ -1,6 +1,6 @@
 using Autodesk.Revit.DB;
 
-namespace KrakhmalovSheets;
+namespace MiraSHA.Sheets;
 
 public static class RevitSelectionSetService
 {
@@ -9,7 +9,7 @@ public static class RevitSelectionSetService
         ViewSet views = BuildViewSet(document, ids);
         if (views.Size == 0) throw new InvalidOperationException("The selection does not contain printable views or sheets.");
 
-        using var transaction = new Transaction(document, "BIMLEADERS Sheets - Create View/Sheet Set");
+        using var transaction = new Transaction(document, "MiraSHA Sheets - Create View/Sheet Set");
         transaction.Start();
         PrintManager manager = document.PrintManager;
         manager.PrintRange = PrintRange.Select;
@@ -24,7 +24,7 @@ public static class RevitSelectionSetService
         var allIds = existing.Views.Cast<View>().Select(view => view.Id).Concat(ids).Distinct().ToList();
         ViewSet views = BuildViewSet(document, allIds);
 
-        using var transaction = new Transaction(document, "BIMLEADERS Sheets - Update View/Sheet Set");
+        using var transaction = new Transaction(document, "MiraSHA Sheets - Update View/Sheet Set");
         transaction.Start();
         ViewSheetSetting setting = document.PrintManager.ViewSheetSetting;
         setting.CurrentViewSheetSet = existing;
@@ -35,7 +35,7 @@ public static class RevitSelectionSetService
 
     public static void Delete(Document document, ViewSheetSet existing)
     {
-        using var transaction = new Transaction(document, "BIMLEADERS Sheets - Delete View/Sheet Set");
+        using var transaction = new Transaction(document, "MiraSHA Sheets - Delete View/Sheet Set");
         transaction.Start();
         ViewSheetSetting setting = document.PrintManager.ViewSheetSetting;
         setting.CurrentViewSheetSet = existing;

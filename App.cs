@@ -3,11 +3,11 @@ using System.Reflection;
 using System.Windows.Media.Imaging;
 using Autodesk.Revit.UI;
 
-namespace KrakhmalovSheets;
+namespace MiraSHA.Sheets;
 
 public sealed class App : IExternalApplication
 {
-    private const string TabName = "BIMLEADERS";
+    private const string TabName = "MiraSHA";
     private const string PanelName = "Sheets";
 
     public Result OnStartup(UIControlledApplication application)
@@ -20,7 +20,7 @@ public sealed class App : IExternalApplication
             }
             catch
             {
-                // The tab can already exist when another BIMLEADERS tool is installed.
+                // The tab can already exist when another MiraSHA tool is installed.
             }
 
             RibbonPanel panel = application.GetRibbonPanels(TabName)
@@ -28,8 +28,8 @@ public sealed class App : IExternalApplication
                 ?? application.CreateRibbonPanel(TabName, PanelName);
 
             var buttonData = new PushButtonData(
-                "BIMLEADERS.Sheets.Export",
-                "BIMLEADERS\nSheets",
+                "MiraSHA.Sheets.Export",
+                "MiraSHA\nSheets",
                 Assembly.GetExecutingAssembly().Location,
                 typeof(ExportSheetsCommand).FullName);
 
@@ -47,7 +47,7 @@ public sealed class App : IExternalApplication
         }
         catch (System.Exception exception)
         {
-            TaskDialog.Show("BIMLEADERS Sheets", exception.Message);
+            TaskDialog.Show("MiraSHA Sheets", exception.Message);
             return Result.Failed;
         }
     }
@@ -63,7 +63,7 @@ public sealed class App : IExternalApplication
         var image = new BitmapImage();
         image.BeginInit();
         image.UriSource = new Uri(
-            $"pack://application:,,,/BIMLEADERS.Sheets;component/Assets/{fileName}",
+            $"pack://application:,,,/MiraSHA.Sheets;component/Assets/{fileName}",
             UriKind.Absolute);
         image.CacheOption = BitmapCacheOption.OnLoad;
         image.EndInit();

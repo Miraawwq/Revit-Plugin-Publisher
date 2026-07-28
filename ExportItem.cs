@@ -2,7 +2,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Autodesk.Revit.DB;
 
-namespace KrakhmalovSheets;
+namespace MiraSHA.Sheets;
 
 public sealed class ExportItem : INotifyPropertyChanged
 {

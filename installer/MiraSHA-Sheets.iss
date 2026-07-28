@@ -1,22 +1,21 @@
-#define MyAppName "BIMLEADERS Sheets"
-#define MyAppVersion "1.3.0"
-#define MyAppPublisher "BIMLEADERS"
-#define PluginFolder "BIMLEADERS Sheets"
-#define PluginAssembly "BIMLEADERS.Sheets.dll"
-#define PluginManifest "BIMLEADERS.Sheets.addin"
+#define MyAppName "MiraSHA Sheets"
+#define MyAppVersion "1.4.0"
+#define MyAppPublisher "MiraSHA"
+#define PluginFolder "MiraSHA Sheets"
+#define PluginAssembly "MiraSHA.Sheets.dll"
+#define PluginManifest "MiraSHA.Sheets.addin"
 
 [Setup]
 AppId={{4E2A699D-B977-4C61-9ED3-E75F5CC56B19}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppPublisher={#MyAppPublisher}
-AppPublisherURL=https://bimleaders.com
 CreateAppDir=no
-UninstallFilesDir={userappdata}\BIMLEADERS\Sheets\Uninstall
+UninstallFilesDir={userappdata}\MiraSHA\Sheets\Uninstall
 DisableProgramGroupPage=yes
 OutputDir=output
-OutputBaseFilename=BIMLEADERS-Sheets-Setup-{#MyAppVersion}
-SetupIconFile=..\Assets\BIMLEADERS-Sheets.ico
+OutputBaseFilename=MiraSHA-Sheets-Setup-{#MyAppVersion}
+SetupIconFile=..\Assets\MiraSHA-Sheets.ico
 Compression=lzma2/ultra64
 SolidCompression=yes
 WizardStyle=modern
@@ -39,31 +38,35 @@ Name: "ukrainian"; MessagesFile: "compiler:Languages\Ukrainian.isl"
 
 [CustomMessages]
 english.VersionPageTitle=Autodesk Revit versions
-english.VersionPageDescription=Select the Revit versions where BIMLEADERS Sheets will be installed.
+english.VersionPageDescription=Select the Revit versions where MiraSHA Sheets will be installed.
 english.Revit2025=Autodesk Revit 2025
 english.Revit2026=Autodesk Revit 2026
 english.SelectVersionError=Select at least one Revit version.
-english.CloseRevitError=Close Autodesk Revit before installing BIMLEADERS Sheets, then run Setup again.
+english.CloseRevitError=Close Autodesk Revit before installing MiraSHA Sheets, then run Setup again.
 russian.VersionPageTitle=Версии Autodesk Revit
-russian.VersionPageDescription=Выберите версии Revit, для которых будет установлен BIMLEADERS Sheets.
+russian.VersionPageDescription=Выберите версии Revit, для которых будет установлен MiraSHA Sheets.
 russian.Revit2025=Autodesk Revit 2025
 russian.Revit2026=Autodesk Revit 2026
 russian.SelectVersionError=Выберите хотя бы одну версию Revit.
-russian.CloseRevitError=Закройте Autodesk Revit перед установкой BIMLEADERS Sheets и запустите установщик снова.
+russian.CloseRevitError=Закройте Autodesk Revit перед установкой MiraSHA Sheets и запустите установщик снова.
 ukrainian.VersionPageTitle=Версії Autodesk Revit
-ukrainian.VersionPageDescription=Виберіть версії Revit, для яких буде встановлено BIMLEADERS Sheets.
+ukrainian.VersionPageDescription=Виберіть версії Revit, для яких буде встановлено MiraSHA Sheets.
 ukrainian.Revit2025=Autodesk Revit 2025
 ukrainian.Revit2026=Autodesk Revit 2026
 ukrainian.SelectVersionError=Виберіть хоча б одну версію Revit.
-ukrainian.CloseRevitError=Закрийте Autodesk Revit перед встановленням BIMLEADERS Sheets і запустіть інсталятор знову.
+ukrainian.CloseRevitError=Закрийте Autodesk Revit перед встановленням MiraSHA Sheets і запустіть інсталятор знову.
 
 [InstallDelete]
 Type: files; Name: "{userappdata}\Autodesk\Revit\Addins\2025\KrakhmalovSheets.addin"; Check: Install2025
 Type: filesandordirs; Name: "{userappdata}\Autodesk\Revit\Addins\2025\KrakhmalovSheets"; Check: Install2025
+Type: files; Name: "{userappdata}\Autodesk\Revit\Addins\2025\BIMLEADERS.Sheets.addin"; Check: Install2025
+Type: filesandordirs; Name: "{userappdata}\Autodesk\Revit\Addins\2025\BIMLEADERS Sheets"; Check: Install2025
 Type: files; Name: "{userappdata}\Autodesk\Revit\Addins\2025\{#PluginManifest}"; Check: Install2025
 Type: filesandordirs; Name: "{userappdata}\Autodesk\Revit\Addins\2025\{#PluginFolder}"; Check: Install2025
 Type: files; Name: "{userappdata}\Autodesk\Revit\Addins\2026\KrakhmalovSheets.addin"; Check: Install2026
 Type: filesandordirs; Name: "{userappdata}\Autodesk\Revit\Addins\2026\KrakhmalovSheets"; Check: Install2026
+Type: files; Name: "{userappdata}\Autodesk\Revit\Addins\2026\BIMLEADERS.Sheets.addin"; Check: Install2026
+Type: filesandordirs; Name: "{userappdata}\Autodesk\Revit\Addins\2026\BIMLEADERS Sheets"; Check: Install2026
 Type: files; Name: "{userappdata}\Autodesk\Revit\Addins\2026\{#PluginManifest}"; Check: Install2026
 Type: filesandordirs; Name: "{userappdata}\Autodesk\Revit\Addins\2026\{#PluginFolder}"; Check: Install2026
 

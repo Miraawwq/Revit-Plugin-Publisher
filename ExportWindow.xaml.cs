@@ -15,7 +15,7 @@ using WpfMenuItem = System.Windows.Controls.MenuItem;
 using TextBox = System.Windows.Controls.TextBox;
 using WpfVisibility = System.Windows.Visibility;
 
-namespace KrakhmalovSheets;
+namespace MiraSHA.Sheets;
 
 public partial class ExportWindow : Window
 {
@@ -182,7 +182,7 @@ public partial class ExportWindow : Window
         if (string.IsNullOrWhiteSpace(name)) return;
         if (_revitSets.Keys.Any(key => key[7..].Equals(name.Trim(), StringComparison.OrdinalIgnoreCase)))
         {
-            TaskDialog.Show("BIMLEADERS Sheets", "A Revit View/Sheet Set with this name already exists.");
+            TaskDialog.Show("MiraSHA Sheets", "A Revit View/Sheet Set with this name already exists.");
             return;
         }
 
@@ -195,7 +195,7 @@ public partial class ExportWindow : Window
         }
         catch (Exception exception)
         {
-            TaskDialog.Show("BIMLEADERS Sheets", exception.Message);
+            TaskDialog.Show("MiraSHA Sheets", exception.Message);
         }
     }
 
@@ -210,7 +210,7 @@ public partial class ExportWindow : Window
     {
         if (SelectionSetCombo.SelectedItem is not string name || !_revitSets.TryGetValue(name, out ViewSheetSet? set))
         {
-            TaskDialog.Show("BIMLEADERS Sheets", "Select a Revit View/Sheet Set first.");
+            TaskDialog.Show("MiraSHA Sheets", "Select a Revit View/Sheet Set first.");
             return;
         }
 
@@ -224,7 +224,7 @@ public partial class ExportWindow : Window
         }
         catch (Exception exception)
         {
-            TaskDialog.Show("BIMLEADERS Sheets", exception.Message);
+            TaskDialog.Show("MiraSHA Sheets", exception.Message);
         }
     }
 
@@ -247,7 +247,7 @@ public partial class ExportWindow : Window
         }
         catch (Exception exception)
         {
-            TaskDialog.Show("BIMLEADERS Sheets", exception.Message);
+            TaskDialog.Show("MiraSHA Sheets", exception.Message);
         }
     }
 
@@ -296,7 +296,7 @@ public partial class ExportWindow : Window
 
     private void ImportProfile(object sender, RoutedEventArgs e)
     {
-        var dialog = new Microsoft.Win32.OpenFileDialog { Title = "Import BIMLEADERS Sheets profile", Filter = "BIMLEADERS Sheets profile (*.json)|*.json" };
+        var dialog = new Microsoft.Win32.OpenFileDialog { Title = "Import MiraSHA Sheets profile", Filter = "MiraSHA Sheets profile (*.json)|*.json" };
         if (dialog.ShowDialog(this) != true) return;
         try
         {
@@ -314,7 +314,7 @@ public partial class ExportWindow : Window
         }
         catch (Exception exception)
         {
-            TaskDialog.Show("BIMLEADERS Sheets", $"Could not import the profile.\n\n{exception.Message}");
+            TaskDialog.Show("MiraSHA Sheets", $"Could not import the profile.\n\n{exception.Message}");
         }
     }
 
@@ -323,8 +323,8 @@ public partial class ExportWindow : Window
         ExportProfile profile = ReadProfileFromControls();
         var dialog = new Microsoft.Win32.SaveFileDialog
         {
-            Title = "Export BIMLEADERS Sheets profile",
-            Filter = "BIMLEADERS Sheets profile (*.json)|*.json",
+            Title = "Export MiraSHA Sheets profile",
+            Filter = "MiraSHA Sheets profile (*.json)|*.json",
             FileName = NamingService.Sanitize(profile.Name) + ".json"
         };
         if (dialog.ShowDialog(this) != true) return;
@@ -638,19 +638,19 @@ public partial class ExportWindow : Window
         ExportProfile profile = ReadProfileFromControls();
         if (selected.Count == 0)
         {
-            TaskDialog.Show("BIMLEADERS Sheets", "Select at least one sheet or view.");
+            TaskDialog.Show("MiraSHA Sheets", "Select at least one sheet or view.");
             return;
         }
 
         if (!AnyFormat(profile))
         {
-            TaskDialog.Show("BIMLEADERS Sheets", "Select at least one export format.");
+            TaskDialog.Show("MiraSHA Sheets", "Select at least one export format.");
             return;
         }
 
         if (string.IsNullOrWhiteSpace(profile.OutputFolder))
         {
-            TaskDialog.Show("BIMLEADERS Sheets", "Select an output folder.");
+            TaskDialog.Show("MiraSHA Sheets", "Select an output folder.");
             return;
         }
 
@@ -682,7 +682,7 @@ public partial class ExportWindow : Window
             string message = $"Completed.\n\nSuccessful: {result.SuccessCount}\nFailed: {result.FailureCount}";
             if (!string.IsNullOrWhiteSpace(result.ReportPath)) message += $"\n\nReport: {result.ReportPath}";
             if (result.FailureCount > 0) message += "\n\n" + string.Join("\n", result.Entries.Where(entry => !entry.Success).Take(8).Select(entry => $"{entry.Format} {entry.Item}: {entry.Message}"));
-            TaskDialog.Show("BIMLEADERS Sheets", message);
+            TaskDialog.Show("MiraSHA Sheets", message);
         }
         finally
         {
@@ -716,7 +716,7 @@ public partial class ExportWindow : Window
             ApplyResultStatuses(result, items);
             RetryButton.IsEnabled = result.FailureCount > 0;
             SummaryGrid.ItemsSource = BuildPreviewRows();
-            TaskDialog.Show("BIMLEADERS Sheets", $"Retry completed.\n\nSuccessful: {result.SuccessCount}\nFailed: {result.FailureCount}");
+            TaskDialog.Show("MiraSHA Sheets", $"Retry completed.\n\nSuccessful: {result.SuccessCount}\nFailed: {result.FailureCount}");
         }
         finally
         {
@@ -740,14 +740,14 @@ public partial class ExportWindow : Window
         if (!TimeSpan.TryParse(ScheduleTimeBox.Text, CultureInfo.CurrentCulture, out TimeSpan time)
             && !TimeSpan.TryParse(ScheduleTimeBox.Text, CultureInfo.InvariantCulture, out time))
         {
-            TaskDialog.Show("BIMLEADERS Sheets", "Enter a valid schedule time, for example 18:30.");
+            TaskDialog.Show("MiraSHA Sheets", "Enter a valid schedule time, for example 18:30.");
             return;
         }
 
         DateTime nextRun = date.Date + time;
         if (nextRun <= DateTime.Now)
         {
-            TaskDialog.Show("BIMLEADERS Sheets", "The scheduled time must be in the future.");
+            TaskDialog.Show("MiraSHA Sheets", "The scheduled time must be in the future.");
             return;
         }
 
@@ -763,7 +763,7 @@ public partial class ExportWindow : Window
         });
         _settings.Save();
         StatusText.Text = $"Export scheduled for {nextRun:g}.";
-        TaskDialog.Show("BIMLEADERS Sheets", $"Export scheduled for {nextRun:g}. Keep Revit open with this project available.");
+        TaskDialog.Show("MiraSHA Sheets", $"Export scheduled for {nextRun:g}. Keep Revit open with this project available.");
     }
 
     private void RepeatChanged(object sender, SelectionChangedEventArgs e)

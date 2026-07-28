@@ -1,7 +1,7 @@
 using Microsoft.Win32;
 using Autodesk.Revit.DB;
 
-namespace KrakhmalovSheets;
+namespace MiraSHA.Sheets;
 
 internal static class PrinterService
 {

@@ -5,16 +5,16 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <PlatformTarget>x64</PlatformTarget>
-    <AssemblyName>BIMLEADERS.Sheets</AssemblyName>
-    <RootNamespace>KrakhmalovSheets</RootNamespace>
+    <AssemblyName>MiraSHA.Sheets</AssemblyName>
+    <RootNamespace>MiraSHA.Sheets</RootNamespace>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-    <AssemblyVersion>1.3.0.0</AssemblyVersion>
-    <FileVersion>1.3.0.0</FileVersion>
-    <Version>1.3.0</Version>
-    <InformationalVersion>1.3.0</InformationalVersion>
-    <Company>BIMLEADERS</Company>
-    <Product>BIMLEADERS Sheets</Product>
-    <Title>BIMLEADERS Sheets</Title>
+    <AssemblyVersion>1.4.0.0</AssemblyVersion>
+    <FileVersion>1.4.0.0</FileVersion>
+    <Version>1.4.0</Version>
+    <InformationalVersion>1.4.0</InformationalVersion>
+    <Company>MiraSHA</Company>
+    <Product>MiraSHA Sheets</Product>
+    <Title>MiraSHA Sheets</Title>
     <RevitVersion Condition="'$(RevitVersion)' == ''">2026</RevitVersion>
     <OutputPath>bin\$(Configuration)\Revit$(RevitVersion)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\Revit$(RevitVersion)\</IntermediateOutputPath>

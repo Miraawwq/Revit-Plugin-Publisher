@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace KrakhmalovSheets;
+namespace MiraSHA.Sheets;
 
 public partial class ExportSettingsWindow : Window
 {

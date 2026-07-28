@@ -5,7 +5,7 @@ using System.Text.Json;
 using System.Xml.Linq;
 using Autodesk.Revit.DB;
 
-namespace KrakhmalovSheets;
+namespace MiraSHA.Sheets;
 
 public static class ExportService
 {
@@ -370,7 +370,7 @@ public static class ExportService
     private static void PrepareViewModes(Document document, IReadOnlyList<ExportItem> items, ExportProfile profile)
     {
         if (document.IsReadOnly || document.IsModifiable) return;
-        using var transaction = new Transaction(document, "BIMLEADERS Sheets - Prepare Views");
+        using var transaction = new Transaction(document, "MiraSHA Sheets - Prepare Views");
         try
         {
             transaction.Start();
@@ -613,7 +613,7 @@ public static class ExportService
         {
             if (!document.IsModifiable)
             {
-                transaction = new Transaction(document, "BIMLEADERS Sheets - IFC Export");
+                transaction = new Transaction(document, "MiraSHA Sheets - IFC Export");
                 transaction.Start();
             }
             using var options = new IFCExportOptions
@@ -769,7 +769,7 @@ public static class ExportService
 
     private static XElement CreateXmlRoot(Document document, ExportProfile profile)
     {
-        var root = new XElement("BIMLEADERSSheets",
+        var root = new XElement("MiraSHASheets",
                 new XAttribute("document", document.Title),
                 new XAttribute("exportedAt", DateTimeOffset.Now.ToString("O")));
         if (profile.XmlIncludeProjectParameters)
@@ -837,7 +837,7 @@ public static class ExportService
     {
         try
         {
-            string path = Path.Combine(profile.OutputFolder, $"BIMLEADERS_Sheets_{DateTime.Now:yyyyMMdd_HHmmss}.csv");
+            string path = Path.Combine(profile.OutputFolder, $"MiraSHA_Sheets_{DateTime.Now:yyyyMMdd_HHmmss}.csv");
             var csv = new StringBuilder("Time,Format,Item,Success,Path,Message\r\n");
             foreach (ExportLogEntry entry in result.Entries)
             {

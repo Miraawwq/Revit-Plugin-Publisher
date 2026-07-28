@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>MiraSHA Sheets</Name>
+    <Assembly>MiraSHA Sheets\MiraSHA.Sheets.dll</Assembly>
+    <AddInId>3C4C0507-685B-4D53-B1B7-595B145DFE0B</AddInId>
+    <FullClassName>MiraSHA.Sheets.App</FullClassName>
+    <VendorId>MSHA</VendorId>
+    <VendorDescription>MiraSHA sheet publishing and export tools</VendorDescription>
+  </AddIn>
+</RevitAddIns>

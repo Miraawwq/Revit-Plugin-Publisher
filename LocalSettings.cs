@@ -1,7 +1,7 @@
 using System.IO;
 using System.Text.Json;
 
-namespace KrakhmalovSheets;
+namespace MiraSHA.Sheets;
 
 public sealed class LocalSettings
 {
@@ -15,6 +15,11 @@ public sealed class LocalSettings
 
     public static string SettingsPath => Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+        "MiraSHA Sheets",
+        "settings.json");
+
+    private static string LegacySettingsPath => Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
         "KrakhmalovSheets",
         "settings.json");
 
@@ -22,9 +27,10 @@ public sealed class LocalSettings
     {
         try
         {
-            if (File.Exists(SettingsPath))
+            string path = File.Exists(SettingsPath) ? SettingsPath : LegacySettingsPath;
+            if (File.Exists(path))
             {
-                LocalSettings? settings = JsonSerializer.Deserialize<LocalSettings>(File.ReadAllText(SettingsPath));
+                LocalSettings? settings = JsonSerializer.Deserialize<LocalSettings>(File.ReadAllText(path));
                 if (settings != null)
                 {
                     settings.Profiles ??= new List<ExportProfile>();

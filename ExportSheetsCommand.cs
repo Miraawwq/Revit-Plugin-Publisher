@@ -5,7 +5,7 @@ using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 
-namespace KrakhmalovSheets;
+namespace MiraSHA.Sheets;
 
 [Transaction(TransactionMode.Manual)]
 [Regeneration(RegenerationOption.Manual)]
@@ -16,7 +16,7 @@ public sealed class ExportSheetsCommand : IExternalCommand
         Document? document = commandData.Application.ActiveUIDocument?.Document;
         if (document == null || document.IsFamilyDocument)
         {
-            TaskDialog.Show("BIMLEADERS Sheets", "Open a Revit project before exporting sheets.");
+            TaskDialog.Show("MiraSHA Sheets", "Open a Revit project before exporting sheets.");
             return Result.Cancelled;
         }
 
@@ -30,7 +30,7 @@ public sealed class ExportSheetsCommand : IExternalCommand
 
         if (sheets.Count == 0)
         {
-            TaskDialog.Show("BIMLEADERS Sheets", "The active project does not contain printable sheets.");
+            TaskDialog.Show("MiraSHA Sheets", "The active project does not contain printable sheets.");
             return Result.Cancelled;
         }
 

@@ -1,7 +1,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 
-namespace KrakhmalovSheets;
+namespace MiraSHA.Sheets;
 
 public partial class ScheduleManagerWindow : Window
 {

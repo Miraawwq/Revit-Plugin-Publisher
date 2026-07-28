@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 
-namespace KrakhmalovSheets;
+namespace MiraSHA.Sheets;
 
 public static class ReportService
 {
@@ -15,7 +15,7 @@ public static class ReportService
 
         string folder = ExportService.ExpandOutputFolder(profile.OutputFolder);
         Directory.CreateDirectory(folder);
-        string stem = $"BIMLEADERS_Sheets_{DateTime.Now:yyyyMMdd_HHmmss}";
+        string stem = $"MiraSHA_Sheets_{DateTime.Now:yyyyMMdd_HHmmss}";
         if (mode.Equals("CSV", StringComparison.OrdinalIgnoreCase) || mode.Equals("Both", StringComparison.OrdinalIgnoreCase))
         {
             string path = Path.Combine(folder, stem + ".csv");

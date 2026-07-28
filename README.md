@@ -1,8 +1,11 @@
-# BIMLEADERS Sheets
+# MiraSHA Sheets
 
 Independent offline Revit 2025/2026 add-in for exporting any number of project sheets.
 
-Build a specific Revit version with `dotnet build -c Release -p:RevitVersion=2025` or `-p:RevitVersion=2026`.
+Build a specific Revit version with `dotnet build MiraSHA.Sheets.csproj -c Release -p:RevitVersion=2025` or `-p:RevitVersion=2026`.
+
+Prebuilt binaries are available under `bin/Release/Revit2025` and `bin/Release/Revit2026`.
+The combined Revit 2025/2026 installer is available under `installer/output`.
 
 Features:
 
@@ -16,4 +19,4 @@ Features:
 - CSV and XLSX reports and per-format output folders;
 - local one-time, daily, weekly, and monthly scheduled publishing while Revit is running;
 - advanced DWF/DWFX, NWC, IFC, image, XML, and temporary-view-mode settings;
-- local settings remain in `%LOCALAPPDATA%\KrakhmalovSheets` for compatibility with existing profiles and schedules.
+- local settings are stored in `%LOCALAPPDATA%\MiraSHA Sheets`; legacy `%LOCALAPPDATA%\KrakhmalovSheets` settings are imported automatically.
